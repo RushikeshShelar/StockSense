@@ -1,9 +1,11 @@
-import Image from 'next/image'
+import LandingHero from '@/components/root/landing-hero'
+import { LandingNavbar } from '@/components/root/landing-navbar'
 
 export default function Home() {
   return (
-    <div>
-      Root Page
-    </div>
+    <main>
+      <LandingNavbar />
+      <LandingHero />
+    </main>
   )
 }
