@@ -1,3 +1,8 @@
+#StockSense
+
+Stock Prediction USing Arima & LSTM Model for Predictions.
+And Next js for Frontend & backend
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
