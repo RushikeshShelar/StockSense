@@ -1,4 +1,5 @@
 import Navbar from "@/components/ui/navbar";
+import Preview from "@/components/ui/preview";
 import Sidebar from "@/components/ui/sidebar";
 
 const DashboardLayout = ({
@@ -17,8 +18,8 @@ const DashboardLayout = ({
                     <hr className="my-2" />
                     {children}
                 </div>
-                <div className="hidden h-full w-1/2 lg:flex lg:fixed lg:w-full bg-red-400 lg:ml-[70rem] lg:inset-y-0">
-                    Preview
+                <div className="hidden h-full w-full lg:flex lg:fixed lg:w-full lg:ml-[69rem] lg:inset-y-0">
+                    <Preview /> {/* Todo - Figure a Way out to Add props to this component */}
                 </div>
             </div>
         </div>

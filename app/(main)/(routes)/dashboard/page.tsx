@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { DollarSign, TrendingDown, TrendingUp } from "lucide-react";
@@ -46,36 +47,44 @@ const stockData = [
     { symbol: 'T', name: 'AT&T Inc.', price: 28.80, change: -0.20, volume: 1500000 },
     { symbol: 'TWTR', name: 'Twitter Inc.', price: 65.75, change: 0.90, volume: 500000 },
 ]
-  
+
 
 const DashboardPage = () => {
     return (
         <main>
-            <div className="w-full h-full flex flex-wrap flex-col space-x-2 overflow-y-auto">
-               {stockData.map((stock,index) => (
-                 <Card className="w-1/2 text-sm mb-2" key={index}>
-                 <CardHeader>
-                     <CardTitle>{stock.symbol}</CardTitle>
-                     <CardDescription>{stock.name}</CardDescription>
-                 </CardHeader>
-                 <CardContent className="flex flex-wrap items-center justify-between text-center">
-                     <div>
-                         Price <br />
-                         ${stock.price}
-                     </div>
-                     <div>
-                         Change<br />
-                         <div className="flex">
-                         {stock.change > 0 ? <TrendingUp className={cn("h-5 w-5 ml-2","text-green-400")} /> : <TrendingDown className={cn("h-5 w-5 ml-2","text-red-400")} />}
-                         </div>
-                     </div>
-                     <div>
-                         Volume <br />
-                         {stock.volume}
-                     </div>
-                 </CardContent>
-             </Card>
-               ))}
+            <div className="w-full h-full flex flex-wrap items-center justify-center space-x-2 overflow-y-auto">
+                {stockData.map((stock, index) => (
+                    <Card className="w-[49%] text-sm mb-2" key={index}>
+                        <CardHeader className="flex flex-row justify-between align-center">
+                            <div>
+                                <CardTitle>{stock.symbol}</CardTitle>
+                                <CardDescription>{stock.name}</CardDescription>
+                            </div>
+                            <div>
+                                <Button size="sm" variant="link">
+                                    View
+                                </Button>
+                            </div>
+                        </CardHeader>
+                        <CardContent className="flex flex-wrap items-center justify-between text-center">
+                            <div>
+                                Price <br />
+                                ${stock.price}
+                            </div>
+                            <div>
+                                Change<br />
+                                <div className="flex">
+                                    {stock.change}
+                                    {stock.change > 0 ? <TrendingUp className={cn("h-5 w-5 ml-2", "text-green-400")} /> : <TrendingDown className={cn("h-5 w-5 ml-2", "text-red-400")} />}
+                                </div>
+                            </div>
+                            <div>
+                                Volume <br />
+                                {stock.volume}
+                            </div>
+                        </CardContent>
+                    </Card>
+                ))}
             </div>
         </main>
     );
