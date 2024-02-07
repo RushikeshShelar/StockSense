@@ -1,5 +1,4 @@
 import Navbar from "@/components/ui/navbar";
-import Preview from "@/components/ui/preview";
 import Sidebar from "@/components/ui/sidebar";
 
 const DashboardLayout = ({
@@ -8,22 +7,20 @@ const DashboardLayout = ({
     children: React.ReactNode;
 }) => {
     return (
-        <div>
-            <div className="h-full relative">
-                <div className="hidden h-full md:flex md:w-56 md:flex-col md:fixed md:inset-y-0 bg-gray-900">
-                    <Sidebar />
-                </div>
-                <div className="h-full w-[56%] md:ml-60">
+        <div className="h-full w-full relative bg-slate-200 overflow-hidden">
+            <div className="hidden h-full md:flex md:w-60 md:flex-col md:fixed md:inset-y-0 bg-white border-r-2" >
+                <Sidebar />
+            </div>
+            {/* Dashboard */}
+            <main className="h-full md:ml-60">
+                <div className="bg-white h-16">
                     <Navbar />
-                    <hr className="my-2" />
+                </div>
+                <div className="w-full h-[91%]">
                     {children}
                 </div>
-                <div className="hidden h-full w-full lg:flex lg:fixed lg:w-full lg:ml-[69rem] lg:inset-y-0">
-                    <Preview /> {/* Todo - Figure a Way out to Add props to this component */}
-                </div>
-            </div>
+            </main>
         </div>
-    )
+    );
 }
-
 export default DashboardLayout;
