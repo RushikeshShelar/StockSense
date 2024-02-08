@@ -1,6 +1,6 @@
 "use client";
 
-import { BarChart, Contact, HomeIcon, LayoutDashboard, Newspaper, Phone, Settings } from "lucide-react";
+import { BarChart, HomeIcon, LayoutDashboard, Newspaper, Phone, Settings } from "lucide-react";
 import Logo from "./logo";
 import Money from "./money";
 import Link from "next/link";
