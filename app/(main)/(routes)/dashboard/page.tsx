@@ -1,7 +1,12 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { DollarSign, TrendingDown, TrendingUp } from "lucide-react";
+import { TrendingDown, TrendingUp } from "lucide-react";
+import { Input } from "@/components/ui/input";
 
 const stockData = [
     { symbol: 'AAPL', name: 'Apple Inc.', price: 150.25, change: 2.75, volume: 5000000 },
@@ -48,13 +53,50 @@ const stockData = [
     { symbol: 'TWTR', name: 'Twitter Inc.', price: 65.75, change: 0.90, volume: 500000 },
 ]
 
+interface Stock {
+    symbol: string;
+    name: string;
+    price: number;
+    change: number;
+    volume: number;
+}
 
 const DashboardPage = () => {
+
+    const [data, setData] = useState<Stock[]>([]);
+    const [search, setSearch] = useState("");
+
+    useEffect(() => {
+        setData([...stockData]);
+    }, []);
+
+    useEffect(() => {
+        const filterData = (search: string) => {
+            if (search === "") {
+                setData([...stockData]);
+                return;
+            } else {
+                const filteredData = stockData.filter((stock) => stock.symbol.toLowerCase().includes(search.toLowerCase()) || stock.name.toLowerCase().includes(search.toLowerCase()));
+                setData([...filteredData]);
+            }
+        }
+        filterData(search);
+    }, [search, stockData, setData])
+
     return (
         <main>
+            <div className="flex justify-between items-center mb-2">
+                <Input
+                    value={search}
+                    onChange={(e) => {
+                        setSearch(e.target.value);
+                    }}
+                    placeholder="Google Inc." id="search" />
+            </div>
+
             <div className="w-full h-full flex flex-wrap items-center justify-center space-x-2 overflow-y-auto">
-                {stockData.map((stock, index) => (
-                    <Card className="w-[49%] text-sm mb-2" key={index}>
+                {data.map((stock, index) => (
+                    <Card className="w-[49%] text-sm mb-2 hover:shadow-md hover:scale-[1.02] transition-all z-[9999]" key={index} >
                         <CardHeader className="flex flex-row justify-between align-center">
                             <div>
                                 <CardTitle>{stock.symbol}</CardTitle>

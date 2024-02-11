@@ -14,13 +14,7 @@ const Navbar = () => {
             <Label htmlFor="search" className="text-lg" >
                 Available Stocks
             </Label>
-            <div className="flex justify-between items-center">
-                <Input
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                placeholder="Google Inc." id="search"/>
-                {/* <UserButton afterSignOutUrl="/" /> */}
-            </div>
+           
           
         </div>
      );

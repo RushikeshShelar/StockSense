@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./card";
+import Chart from "./chart";
 
 interface PreviewProps {
     symbol: string;
@@ -6,6 +7,7 @@ interface PreviewProps {
     price: number;
     sector: string;
     industry: string;
+    data: object[];
 }
 
 const Preview: React.FC<PreviewProps> = ({
@@ -13,10 +15,11 @@ const Preview: React.FC<PreviewProps> = ({
     name,
     price,
     sector,
-    industry
+    industry,
+    data
 }) => {
     return (
-        <div className="max-w-[25.3rem] w-[25.3rem] h-full py-4 px-0">
+        <div className="min-w-[25.3rem]  h-full py-4 px-0 flex flex-col gap-2">
             <Card>
                 <CardHeader className="mb-5">
                     <CardTitle className="text-2xl"> Stock Details </CardTitle>
@@ -36,6 +39,8 @@ const Preview: React.FC<PreviewProps> = ({
                     </div>
                 </CardContent>
             </Card>
+
+            <Chart data={data}/>
         </div>
     );
 }
